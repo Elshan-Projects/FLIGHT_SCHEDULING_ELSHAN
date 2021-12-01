@@ -35,9 +35,12 @@ def schedule(n_a,n_c,time_in_days,cities):
     cl = []
     for ii in range(len(city_str)):
         cl.append(city_str[ii][0])
-    
+    #  Sorted version of the durations list
+    # DS - Durations Sorted
     ds = sorted(duration)
+    # th - Total Hours
     th = time_in_days*24
+
     records=[]
     stage = 0
     x=1
@@ -45,11 +48,13 @@ def schedule(n_a,n_c,time_in_days,cities):
     for  j in range(n_c):
 
         for jj in range(n_a):
-            records.append( (j, jj, x, stage+jj*0.25, stage+jj*0.25+ds[j], y, stage+jj*0.25+2*ds[j]) )
+            records.append( (j, jj, x, stage+jj*0.25, 
+                            stage+jj*0.25+ds[j], y, stage+jj*0.25+2*ds[j]) )
             if(records[-1][-1]>=th):
                 print("The program was unable to finish in the given time period")
                 break
-        stage=records[-1][-1]
+       
+        stage=records[-1][-1] + 0.25
         x, y = y, x
 
     table = []
