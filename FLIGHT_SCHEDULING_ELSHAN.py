@@ -47,6 +47,7 @@ def schedule(n_a,n_c,time_in_days,cities):
         for jj in range(n_a):
             records.append( (j, jj, x, stage+jj*0.25, stage+jj*0.25+ds[j], y, stage+jj*0.25+2*ds[j]) )
             if(records[-1][-1]>=th):
+                print("The program was unable to finish in the given time period")
                 break
         stage=records[-1][-1]
         x, y = y, x
